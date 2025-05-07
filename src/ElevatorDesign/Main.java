@@ -8,26 +8,25 @@ public class Main {
     static Building building = new Building();
 
     public static void main(String[] args) {
-        ElevatorCreator elevatorCreator = new ElevatorCreator();
         ElevatorController elevatorController = ElevatorCreator.getElevatorController();
 
-        printElevator();
+//        printElevator();
         Floor floor1 = building.getFloor(0);
         floor1.pressButton(Direction.DOWN);
 
-        printElevator();
+//        printElevator();
         Floor floor2 = building.getFloor(4);
         floor2.pressButton(Direction.DOWN);
 
-        printElevator();
+//        printElevator();
         elevatorController.elevatorList.get(1).move(2);
         elevatorController.elevatorList.get(1).stop();
 
-        printElevator();
+//        printElevator();
         Floor floor3 = building.getFloor(1);
         floor3.pressButton(Direction.UP);
 
-        printElevator();
+//        printElevator();
     }
 
 
