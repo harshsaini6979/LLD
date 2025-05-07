@@ -1,3 +1,5 @@
-package SnakeAndLadder;public class Cell {
+package SnakeAndLadder;
+
+public class Cell {
     Jump jump;
 }

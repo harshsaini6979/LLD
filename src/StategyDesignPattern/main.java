@@ -6,8 +6,9 @@ public class main {
         Vehicle normalVehicle = new NormalVehicle();
         Vehicle sportsVehicle = new SportsVehicle();
 
+        System.out.println("Calling: normalVehicle.drive();");
         normalVehicle.drive();
-
+        System.out.println("Calling: sportsVehicle.drive();");
         sportsVehicle.drive();
     }
 }
