@@ -65,7 +65,6 @@ public class ExpenseFactory {
                 return null;
         }
 
-
         if (type.equals("UserExpense")) {
             System.out.print("Enter the IDs of the users (comma separated): ");
             String userIds = scanner.nextLine();

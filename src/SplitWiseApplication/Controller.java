@@ -11,7 +11,6 @@ import java.util.*;
 public class Controller {
     Map<String, User> allUsers;
     Map<String, Group> allGroups;
-    ExpenseFactory expenseFactory = new ExpenseFactory();
 
     public Controller() {
         this.allUsers = new HashMap<>();
@@ -195,5 +194,9 @@ public class Controller {
         ExpenseStrategy expenseStrategy = new EqualSplit();
         Expense expense1 = new GroupExpense("Dinner", user1, group1, expenseStrategy, 100.0);
         expense1.updateBalanceSheet();
+
+        ExpenseStrategy expenseStrategy2 = new EqualSplit();
+        Expense expense2 = new GroupExpense("Lunch", user1, group1, expenseStrategy2, 200.0);
+        expense2.updateBalanceSheet();
     }
 }

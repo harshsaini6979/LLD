@@ -22,25 +22,31 @@ public class BalanceSheet {
 
     public void addToPay(User user, double amount) {
         double toReceiveAmount = toReceive.getOrDefault(user, 0.0);
+        double toPayAmount = toPay.getOrDefault(user, 0.0) + amount;
 
-        if (toReceiveAmount >= amount) {
-            toReceive.put(user, toReceiveAmount - amount);
+        toPay.put(user, toPayAmount);
+
+        if (toReceiveAmount>=toPayAmount) {
+            toReceive.put(user, toReceiveAmount - toPayAmount);
+            toPay.put(user, 0.0);
         } else {
-            amount -= toReceiveAmount;
+            toPay.put(user, toPayAmount - toReceiveAmount);
             toReceive.put(user, 0.0);
-            toPay.put(user, amount);
         }
     }
 
     public void addToReceive(User user, double amount) {
+        double toReceiveAmount = toReceive.getOrDefault(user, 0.0) + amount;
         double toPayAmount = toPay.getOrDefault(user, 0.0);
 
-        if (toPayAmount >= amount) {
-            toPay.put(user, toPayAmount - amount);
-        } else {
-            amount -= toPayAmount;
+        toPay.put(user, toPayAmount);
+
+        if (toReceiveAmount>=toPayAmount) {
+            toReceive.put(user, toReceiveAmount - toPayAmount);
             toPay.put(user, 0.0);
-            toReceive.put(user, amount);
+        } else {
+            toPay.put(user, toPayAmount - toReceiveAmount);
+            toReceive.put(user, 0.0);
         }
     }
 
