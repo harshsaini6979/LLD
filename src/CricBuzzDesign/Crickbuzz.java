@@ -108,6 +108,11 @@ public class Crickbuzz {
                     }
                     break;
                 case 5:
+                    System.out.print("Available teams: ");
+                    for (String teamKey : teamList.keySet()) {
+                        System.out.print(teamKey + " | ");
+                    }
+                    System.out.println();
                     System.out.print("Enter Team 1 Name: ");
                     String team1Name = scanner.nextLine();
                     System.out.print("Enter Team 2 Name: ");

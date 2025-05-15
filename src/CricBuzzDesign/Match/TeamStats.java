@@ -66,14 +66,19 @@ public class TeamStats {
         sb.append("Team Wickets: ").append(teamWickets).append("\n");
         sb.append("Batting Stats: \n");
 
-        for (Map.Entry<Player, BattingStats> entry : battingStatsMap.entrySet()) {
-            Player key = entry.getKey();
-            BattingStats value = entry.getValue();
+        sb.append("Player   : Runs   Balls  4s     6s     Strike rate\n");
+        sb.append("--------------------------------------------------\n");
+        battingStatsMap.entrySet().stream()
+                .sorted((e1, e2) -> Integer.compare(e2.getValue().runs, e1.getValue().runs))
+                .forEach(entry -> {
+                    Player key = entry.getKey();
+                    BattingStats value = entry.getValue();
 
-            if (value.balls > 0) {
-                sb.append(key.getName()).append(": ").append(value.toString()).append("\n");
-            }
-        }
+                    if (value.balls > 0) {
+                        sb.append(String.format("%-9s", key.getName())).append(": ").append(value.toString()).append("\n");
+                    }
+                });
+
         return sb.toString();
     }
 
@@ -82,14 +87,21 @@ public class TeamStats {
         sb.append("Bowling Name: " ).append(teamName).append("\n");
 
         sb.append("Bowling Stats: \n");
-        for (Map.Entry<Player, BowlingStats> entry : bowlingStatsMap.entrySet()) {
-            Player key = entry.getKey();
-            BowlingStats value = entry.getValue();
 
-            if (value.balls > 0) {
-                sb.append(key.getName()).append(": ").append(value.toString()).append("\n");
-            }
-        }
+        sb.append("Player   : O    M    R    W    Eco\n");
+        sb.append("----------------------------------\n");
+
+        bowlingStatsMap.entrySet().stream()
+                .sorted((e1, e2) -> Integer.compare(e2.getValue().wickets, e1.getValue().wickets))
+                .forEach(entry -> {
+                    Player key = entry.getKey();
+                    BowlingStats value = entry.getValue();
+
+                    if (value.balls > 0) {
+                        sb.append(String.format("%-9s", key.getName())).append(": ").append(value.toString()).append("\n");
+                    }
+                });
+
         return sb.toString();
     }
 

@@ -24,6 +24,48 @@ public class BattingStats {
     }
 
     public String toString() {
-        return "[Runs: " + runs + ", Balls: " + balls + ", Fours: " + fours + ", Sixes: " + sixes + "]";
+        String toReturn = "";
+
+        int diff = 7;
+
+        int i = diff;
+        toReturn += String.valueOf(runs);
+
+        i -= String.valueOf(runs).length();
+        while (i-- > 0) {
+            toReturn += " ";
+        }
+
+        i = diff;
+        toReturn += String.valueOf(balls);
+
+        i -= String.valueOf(balls).length();
+        while (i-- > 0) {
+            toReturn += " ";
+        }
+
+        i = diff;
+        toReturn += String.valueOf(fours);
+
+        i -= String.valueOf(fours).length();
+        while (i-- > 0) {
+            toReturn += " ";
+        }
+
+        i = diff;
+        toReturn += String.valueOf(sixes);
+
+        i -= String.valueOf(sixes).length();
+
+        while (i-- > 0) {
+            toReturn += " ";
+        }
+
+
+        // Calculate and format strike rate to 2 decimal places
+        double strikeRate = balls > 0 ? (runs * 100.0) / balls : 0.0;
+        toReturn += String.format("%.2f", strikeRate);
+
+        return toReturn;
     }
 }

@@ -5,6 +5,9 @@ import CricBuzzDesign.Match.TeamStats;
 import CricBuzzDesign.Player.Player;
 import CricBuzzDesign.WicketType;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestGame implements MatchStrategy {
     int overs = 450;
     @Override
@@ -17,7 +20,14 @@ public class TestGame implements MatchStrategy {
 
         int batterIndex = 2;
 
-        Player bowler = bowlingTeamStats.getPlayers().get(10);
+        List<Player> availableBowlers = new ArrayList<>();
+
+        for (Player player : bowlingTeamStats.getPlayers().subList(3, 10)) {
+            availableBowlers.add(player);
+        }
+
+        Player bowler = availableBowlers.get(0);
+        int bowlerIndex = 0;
 
         boolean toContinue = true;
         int i = 0;
@@ -33,7 +43,7 @@ public class TestGame implements MatchStrategy {
 
                 int runs = (int) (Math.random() * 7);
 
-                int wicket = (int) (Math.random() * 80);
+                int wicket = (int) (Math.random() * 200);
 
                 if (wicket == 1) {
                     runs = 0;
@@ -72,7 +82,8 @@ public class TestGame implements MatchStrategy {
 
 
                 if (i % 6 == 0) {
-                    bowler = bowlingTeamStats.getPlayers().get(5 + (int) (Math.random() * 5));
+                    bowlerIndex = (int) (Math.random() * availableBowlers.size());
+                    bowler = availableBowlers.get(bowlerIndex);
 
                     Player temp = batter1;
                     batter1 = batter2;
