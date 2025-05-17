@@ -26,7 +26,7 @@ public class Invoice {
             Product product = entry.getKey();
             System.out.print("(" + product.getProductName() + " : " + entry.getValue() + ") ");
         }
-        System.out.print("Total Price: " + totalPrice);
+        System.out.print("| Total Price: " + totalPrice);
         System.out.println("]");
     }
 }

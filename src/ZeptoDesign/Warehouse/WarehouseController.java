@@ -63,6 +63,8 @@ public class WarehouseController {
             int productId = entry.getKey();
             int requiredQuantity = entry.getValue();
 
+            System.out.println(productId + ": " + requiredQuantity + " * " + warehouse.getProduct(productId).getProductPrice() + " = " + warehouse.totalAmount(productId, requiredQuantity));
+
             totalAmount += warehouse.totalAmount(productId, requiredQuantity);
 
             updateProduct(warehouse.getWareHouseId(), productId, -requiredQuantity);

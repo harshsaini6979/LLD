@@ -29,6 +29,7 @@ public class Cart {
             if (productList.get(productId) <= 0) {
                 productList.remove(productId);
             }
+            System.out.println("Product removed from cart: " + productId + ", Quantity: " + quantity);
         } else {
             System.out.println("Product not found in cart.");
         }

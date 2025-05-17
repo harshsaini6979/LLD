@@ -42,7 +42,6 @@ public class User {
 
     public void removeFromCart(int productId, int count) {
         cart.removeProduct(productId, count);
-        System.out.println("Product removed from cart: " + productId + ", Quantity: " + count);
     }
 
     public void placeOrder() {
