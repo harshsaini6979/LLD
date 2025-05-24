@@ -36,6 +36,9 @@ public class BankInstrumentService extends InstrumentService {
 
         if (instruments != null) {
             for (Instrument instrument : instruments) {
+                if (!(instrument instanceof BankInstrument)) {
+                    continue; // Skip if the instrument is not a BankInstrument
+                }
                 InstrumentDAO instrumentDAO = new InstrumentDAO();
                 instrumentDAO.setInstrumentId(instrument.getInstrumentId());
                 instrumentDAO.setUserId(userId);

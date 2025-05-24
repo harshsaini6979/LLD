@@ -37,6 +37,9 @@ public class CreditCardInstrumentService extends InstrumentService {
 
         if (instruments != null) {
             for (Instrument instrument : instruments) {
+                if (!(instrument instanceof CreditCardInstrument)) {
+                    continue; // Skip if the instrument is not a CreditCardInstrument
+                }
                 InstrumentDAO instrumentDAO = new InstrumentDAO();
                 instrumentDAO.setInstrumentId(instrument.getInstrumentId());
                 instrumentDAO.setUserId(instrument.getUserId());
